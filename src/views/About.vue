@@ -1,5 +1,5 @@
 <template>
-    <p>This is the about page</p>
+    <p>This is a Vue.js 3 app.</p>
 </template>
 
 <script>

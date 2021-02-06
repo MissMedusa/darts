@@ -2,21 +2,22 @@
   <div class="match-list-container">
     <table class="match-list-table">
       <tr>
-         <th>Match ID</th>
+         <th></th>
           <th>Player 1</th>
+          <th>Score</th>
           <th>Player 2</th>
+          <th></th>
           <th>Legs to win</th>
-          <th>Player 1 score</th>
-          <th>Player 2 score</th>
 
       </tr>
       <tr v-for="match in allMatches" :key="match.matchId">
-        <td>{{ match.matchId }}</td>
-        <td>{{ match.player1.firstName + " " + match.player1.lastName}}</td>
-        <td>{{ match.player2.firstName + " " + match.player1.lastName}}</td>
+        <td><img :src="match.player1.avatarUrl" alt="Player 1"></td>
+        <td>{{ match.player1.firstName }} {{ match.player1.lastName}}</td>
+        <td>{{ match.player1Score }} vs {{ match.player2Score }}</td>
+        <td>{{ match.player2.firstName }} {{ match.player1.lastName}}</td>
+        <td><img :src="match.player2.avatarUrl" alt="Player 2"></td>
         <td>{{ match.legsToWin }}</td>
-        <td>{{ match.player1Score }}</td>
-        <td>{{ match.player2Score }}</td>
+
       </tr>      
     </table>
   </div>
@@ -45,11 +46,15 @@ export default {
 </script>
 
 <style scoped>
+.match-list-container {
+  display: flex;
+  justify-content: center;
+}
 
-table {
+.match-list-table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 60vw;
 }
 
 td, th {
@@ -59,7 +64,11 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #ffffff;
+}
+
+img {
+  border-radius: 50%;
 }
 
 </style>
