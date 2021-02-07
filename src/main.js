@@ -7,10 +7,11 @@ import Button from 'primevue/button';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup'; 
+import Galleria from 'primevue/galleria';
 
-import "primevue/resources/themes/saga-blue/theme.css"       //theme
-import "primevue/resources/primevue.min.css"                 //core css
-import "primeicons/primeicons.css"                           //icons
+import 'primevue/resources/themes/saga-blue/theme.css'       //theme
+import 'primevue/resources/primevue.min.css'                 //core css
+import 'primeicons/primeicons.css'                           //icons
 
 const app = createApp(App)
 
@@ -22,5 +23,6 @@ app.component('Button', Button)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
 app.component('ColumnGroup', ColumnGroup)
+app.component('Galleria', Galleria)
 
 app.mount('#app')

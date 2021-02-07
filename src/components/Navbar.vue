@@ -1,11 +1,11 @@
 <template>
-  <div id="navbar">
-    <div id="logo-container">
-      <img label="DartsAPI" id="logo" src="../assets/logo.png" alt="Logo">
-      <span id="project-name">Darts API</span>
+  <div id='navbar'>
+    <div id='logo-container'>
+      <img label='DartsAPI' id='logo' src='../assets/logo.png' alt='Logo'>
+      <span id='project-name'>Darts API</span>
     </div>
-    <TabMenu :model="items" />
-    <Button label="New match" class="p-button-primary"/>
+    <TabMenu :model='items' />
+    <Button label='New match' class='p-button-primary'/>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
 #navbar {
   display: flex;
@@ -38,7 +38,7 @@ export default {
 #logo-container {
   display: flex;
   font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: #4e4e4e;
 }
 
