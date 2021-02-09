@@ -1,17 +1,16 @@
 <template>
+  <div class='add-modal-container' v-if="addModalToggle">
+    <AddThrow :chosenPlayerId="chosenPlayerId" :matchId="matchId" @close="closeAddModal"/>
+  </div>
   <div class="backdrop" @click.self="closeModal">
     <div class="details-modal">
-      <div class="modal-header">
-        <h2>Match Legs</h2>
-        <Button @click="$router.push('newthrow')" label='Add throw' class='p-button-primary'/>
-      </div>
       <div class="table-container">
         <table class="details-table" v-for="(leg, legIndex) in matchLegDetails" :key="leg.numberOfLeg">
           <tr>
             <th colspan="6" class="leg">Leg {{ leg.numberOfLeg }}</th>
           </tr>
           <tr> 
-            <th colspan="6" class="player">Player 1</th>          
+            <th colspan="6" class="player">Player 1<button @click="toAddThrow(clickedMatch.player1.playerId)">Add throw</button></th>          
           </tr>
           <tr>
             <th>Throw</th>
@@ -30,7 +29,7 @@
             <td>{{  }}</td>
           </tr>
           <tr>
-            <th colspan="6" class="player">Player 2</th>
+            <th colspan="6" class="player">Player 2<button @click="toAddThrow(clickedMatch.player2.playerId)">Add throw</button></th>
           </tr>
           <tr>
             <th>Throw</th>
@@ -55,14 +54,23 @@
 </template>
 
 <script>
+import AddThrow from './AddThrow.vue'
+
 export default {
   name: 'MatchDetailsModal',
   props: ['clickedMatch'],
+  emits: ['close'],
+  components: {
+    AddThrow
+  },
   data() {
     return {
       matchLegDetails: [],
       matchId: this.clickedMatch.matchId,
-      currentScore: 501
+      previousScore: 501,
+      currentScore: 0,
+      addModalToggle: false,
+      chosenPlayerId: ''
     }
   },
   mounted() {
@@ -79,6 +87,13 @@ export default {
   methods: {
     closeModal() {
       this.$emit('close')
+    },
+    toAddThrow(playerId) {
+      this.chosenPlayerId = playerId
+      this.addModalToggle = !this.addModalToggle
+    },
+    closeAddModal() {
+      this.addModalToggle = !this.addModalToggle
     }
   }
 }
@@ -123,7 +138,7 @@ td, th {
 .leg {
   color: white;
   background-color: #3996e2;
-} 
+}
 
 .player {  
   color: white;
@@ -139,6 +154,17 @@ td, th {
 
 h2 {
   align-self: center;
+}
+
+button {
+    color: #ffffff;
+    background: #2196F3;
+    border: 2px solid #5ba7e6;
+    padding: 5px 10px;    
+    margin-left: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 3px;
 }
 
 </style>

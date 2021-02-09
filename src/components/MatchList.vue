@@ -52,7 +52,6 @@ export default {
     toDetailedView(index) {
       this.clickedMatch = this.allMatches[index]
       this.modalToggle = !this.modalToggle
-      console.log(this.clickedMatch)
     },
     closeModal() {
       this.modalToggle = !this.modalToggle
