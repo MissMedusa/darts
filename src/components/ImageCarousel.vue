@@ -1,9 +1,10 @@
 <template>
-    <div id='image-container'>
+    <div id='image-container'>        
         <img class='images' src='../assets/1.jpg'>
+        <img class='images' src='../assets/2.jpg'>
         <img class='images' src='../assets/3.jpg'>
         <img class='images' src='../assets/4.jpg'>
-        <img class='images' src='../assets/6.jpg'>
+        <h1>Welcome to Darts API.<br>You can view existing matches, other players, or you can start your own match!</h1>
     </div>
 </template>
 
@@ -32,6 +33,11 @@ export default {
 </script>
 
 <style scoped>
+.image-container {
+  position: relative;
+  text-align: center;
+}
+
 .images {
   max-height: 70vh;
   width: 100%;
@@ -40,18 +46,13 @@ export default {
   display: none;
 }
 
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+h1 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 52px;
+  color: white;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 }
 </style>

@@ -1,21 +1,21 @@
 <template>
-  <MatchDetailsModal :clickedMatch='clickedMatch'/>
+  <div class='modal-container' v-if="modalToggle">
+    <MatchDetailsModal :clickedMatch="clickedMatch" @close="closeModal" />
+  </div>
   <div class='match-list-container'>
     <table class='match-list-table'>
-      <tr>
-         <th></th>
-          <th>Player 1</th>
+      <tr>         
+          <th colspan="2">Player 1</th>
           <th>Score</th>
-          <th>Player 2</th>
-          <th></th>
+          <th colspan="2">Player 2</th>          
           <th>Legs to win</th>
       </tr>
-      <tr class='match-row' v-for='match in allMatches' :key='match.matchId' @click='toDetailedView(allMatches.indexOf(match))'>
-        <td><img :src='match.player1.avatarUrl' alt='Player 1'></td>
+      <tr class="match-row" v-for="match in allMatches" :key="match.matchId" @click="toDetailedView(allMatches.indexOf(match))">
+        <td><img :src="match.player1.avatarUrl" alt="Player 1"></td>
         <td>{{ match.player1.firstName }} {{ match.player1.lastName}}</td>
         <td>{{ match.player1Score }} vs {{ match.player2Score }}</td>
         <td>{{ match.player2.firstName }} {{ match.player1.lastName}}</td>
-        <td ><img :src='match.player2.avatarUrl' alt='Player 2'></td>
+        <td ><img :src="match.player2.avatarUrl" alt="Player 2"></td>
         <td>{{ match.legsToWin }}</td>
       </tr>      
     </table>
@@ -23,13 +23,18 @@
 </template>
 
 <script>
+import MatchDetailsModal from './MatchDetailsModal.vue'
 
 export default {
-  name: 'MatchList',  
+  name: 'MatchList',
+  components: {
+    MatchDetailsModal
+  },
   data() {
     return {
       allMatches: [],
-      clickedMatch: []
+      clickedMatch: [],
+      modalToggle: false
     }
   },
   mounted() {
@@ -46,7 +51,11 @@ export default {
   methods: {
     toDetailedView(index) {
       this.clickedMatch = this.allMatches[index]
+      this.modalToggle = !this.modalToggle
       console.log(this.clickedMatch)
+    },
+    closeModal() {
+      this.modalToggle = !this.modalToggle
     }
   }
 }
@@ -56,12 +65,14 @@ export default {
 .match-list-container {
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 .match-list-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 60vw;
+  border-collapse: collapse;  
+  background-color: #65a6da;
+  width: 60vw;  
+  font-weight: 600;
 }
 
 td, th {
@@ -70,11 +81,16 @@ td, th {
 }
 
 .match-row:hover {  
-  background-color: #a5cbf1;
+  background-color: #64b5f5;
+}
+
+.match-row:nth-child(even):hover {  
+  background-color: #cdebfd;
 }
 
 tr:nth-child(even) {
   background-color: #ffffff;
+  color: #455e8e;
 }
 
 img {

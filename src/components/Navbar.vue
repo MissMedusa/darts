@@ -5,7 +5,7 @@
       <span id='project-name'>Darts API</span>
     </div>
     <TabMenu :model='items' />
-    <Button label='New match' class='p-button-primary'/>
+    <Button label='New match' class='p-button-primary' @click="$router.push('newmatch')"/>
   </div>
 </template>
 
@@ -18,8 +18,7 @@ export default {
         items: [
                   {label: 'Home', icon: 'pi pi-fw pi-home', to: '/'},
                   {label: 'Matches', icon: 'pi pi-fw pi-list', to: '/matches'},
-                  {label: 'Players', icon: 'pi pi-fw pi-users', to: '/players'},              
-                  {label: 'About', icon: 'pi pi-fw pi-question-circle', to: '/about'}
+                  {label: 'Players', icon: 'pi pi-fw pi-users', to: '/players'}
               ]
       }
     }
@@ -32,14 +31,16 @@ export default {
   display: flex;
   justify-content: space-around;
   padding: 30px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9) ;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 9999;
 }
 
 #logo-container {
   display: flex;
-  font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  color: #4e4e4e;
+  font-weight: 600;  
 }
 
 #project-name {

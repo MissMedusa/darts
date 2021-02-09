@@ -47,12 +47,14 @@ export default {
 .player-list-container {
   display: flex;  
   justify-content: center;
+  color: white;
 }
 
 .player-list-table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 50vw;
+  background-color: #65a6da;  
+  font-weight: 600;
 }
 
 td, th {
@@ -62,6 +64,7 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #ffffff;
+  color: #455e8e;
 }
 
 img {
